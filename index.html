@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flores Amarillas 🌼</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <main class="universo">
+
+        <div class="estrellas"></div>
+
+        <div class="frases"></div>
+
+        <div class="flores"></div>
+
+        <div class="corazon">♥</div>
+
+        <svg class="galaxia-roja" viewBox="-150 -50 900 400">
+
+            <defs>
+
+                <!-- Gas rojo -->
+                <filter id="gasRojo"
+                        x="-30%"
+                        y="-30%"
+                        width="160%"
+                        height="160%">
+
+                    <feTurbulence
+                        type="fractalNoise"
+                        baseFrequency="0.025"
+                        numOctaves="3"
+                        seed="8"
+                        result="ruido"
+                    />
+
+                    <feDisplacementMap
+                        in="SourceGraphic"
+                        in2="ruido"
+                        scale="55"
+                    />
+
+                    <feGaussianBlur
+                        stdDeviation="14"
+                    />
+                </filter>
+
+
+                <!-- Brillo suave -->
+                <filter id="brilloGas">
+
+                    <feGaussianBlur
+                        stdDeviation="12"
+                        result="blur"
+                    />
+
+                    <feMerge>
+                        <feMergeNode in="blur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+
+                </filter>
+
+
+                <!-- Núcleo -->
+                <radialGradient id="nucleoGas">
+
+                    <stop
+                        offset="0%"
+                        stop-color="#ffdddd"
+                        stop-opacity="1"
+                    />
+
+                    <stop
+                        offset="25%"
+                        stop-color="#ff3333"
+                        stop-opacity="0.9"
+                    />
+
+                    <stop
+                        offset="60%"
+                        stop-color="#ff0000"
+                        stop-opacity="0.35"
+                    />
+
+                    <stop
+                        offset="100%"
+                        stop-color="#ff0000"
+                        stop-opacity="0"
+                    />
+
+                </radialGradient>
+
+            </defs>
+
+
+            <!-- Nube exterior -->
+
+            <path
+                class="gas gas-1"
+                d="
+                M 40 160
+                C 100 40,
+                250 20,
+                430 70
+                C 555 105,
+                565 195,
+                440 235
+                C 300 280,
+                130 245,
+                90 165
+                C 65 115,
+                155 75,
+                290 95
+                C 390 110,
+                430 155,
+                365 185
+                C 310 210,
+                225 190,
+                215 145
+                C 210 120,
+                260 110,
+                300 125
+                "
+            />
+
+
+        
+
+            <!-- Núcleo difuso -->
+
+            <ellipse
+                class="nucleo-gas"
+                cx="300"
+                cy="150"
+                rx="70"
+                ry="45"
+            />
+
+        </svg>
+
+        <div class="contenido">
+
+            <h1>Flores Amarillas 🌼</h1>
+
+            <p>
+                Para alguien muy especial 💛
+            </p>
+
+            <button id="btnComenzar">
+                Comenzar ✨
+            </button>
+
+        </div>
+
+    </main>
+
+    <script src="JS/javascript.js"></script>
+    
+</body>
+</html>

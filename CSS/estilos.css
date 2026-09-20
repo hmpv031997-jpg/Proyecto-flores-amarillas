@@ -1,0 +1,342 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #010101;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.universo {
+    min-height: 100vh;
+    position: relative;
+    overflow: visible;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    perspective: 1000px;
+    perspective-origin: 50% 50%;
+
+    cursor: grab;
+}
+
+.contenido {
+    text-align: center;
+}
+
+.contenido h1 {
+    font-size: 3rem;
+    color: #ffd700;
+}
+
+.contenido p {
+    margin-top: 15px;
+    font-size: 1.2rem;
+}
+
+.contenido button {
+    margin-top: 30px;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    background-color: #ffd700;
+    color: #111;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.flor {
+    position: absolute;
+    font-size: 3rem;
+}
+
+.flor-1 {
+    top: 15%;
+    left: 20%;
+}
+
+.flor-2 {
+    top: 10%;
+    right: 15%;
+}
+
+.flor-3 {
+    bottom: 12%;
+    left: 10%;
+}
+
+.flor-4 {
+    bottom: 10%;
+    right: 12%;
+}
+
+.flor-5 {
+    bottom: 10%;
+    right: 50%;
+}
+
+.flor-6 {
+    top: 10%;
+    right: 50%;
+}
+
+.universo img {
+    width: 100px;
+    height: auto;
+}
+
+
+.flor-generada {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: auto;
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+.flores {
+    position: absolute;
+    inset: -20%;
+    pointer-events: none;
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+.contenido {
+    position: relative;
+    z-index: 20;
+    transition: opacity 0.8s ease;
+}
+
+/* Flores ocultas al comenzar */
+
+.flores {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease;
+}
+
+/* Corazón oculto */
+
+.corazon {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    font-size: 110px;
+    color: #ff1a1a;
+
+    opacity: 0;
+    visibility: hidden;
+
+    z-index: 15;
+
+    /* Brillo del corazón */
+    text-shadow:
+        0 0 10px #ff0000,
+        0 0 25px #ff0000,
+        0 0 45px #ff0000,
+        0 0 80px rgba(255, 0, 0, 0.8);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+
+    animation: latido 1.5s infinite ease-in-out;
+}
+
+@keyframes latido {
+
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.08);
+    }
+}
+
+/* Cuando empieza el espectáculo */
+
+.universo.espectaculo .contenido {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.universo.espectaculo .flores {
+    opacity: 1;
+    visibility: visible;
+}
+
+.universo.espectaculo .corazon {
+    opacity: 1;
+    visibility: visible;
+}
+
+.galaxia-roja {
+    position: absolute;
+
+    left: 50%;
+    top: 57%;
+
+    width: 520px;
+    height: auto;
+
+    transform:
+        translate(-50%, -50%)
+        rotateX(65deg);
+
+    opacity: 0;
+    visibility: hidden;
+
+    pointer-events: none;
+
+    z-index: 2;
+
+    animation: galaxiaGiro 20s linear infinite;
+}
+
+.gas {
+    fill: none;
+
+    stroke: #ff1515;
+
+    stroke-linecap: round;
+
+    filter: url(#gasRojo);
+}
+
+.gas-1 {
+    stroke-width: 13px;
+    opacity: 0.18;
+}
+
+.gas-2 {
+    stroke-width: 11px;
+    opacity: 0.28;
+}
+
+.nucleo-gas {
+    fill: url(#nucleoGas);
+
+    filter: url(#brilloGas);
+}
+
+.universo.espectaculo .galaxia-roja {
+    opacity: 1;
+    visibility: visible;
+}
+
+.estrellas {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    
+    opacity: 0;
+    visibility: hidden;
+
+    transition: opacity 1s ease;
+}
+
+.estrella {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+}
+
+.universo.espectaculo .estrellas {
+
+    opacity: 1;
+
+    visibility: visible;
+}
+
+.frases {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 4;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: opacity 1s ease;
+}
+
+.universo.espectaculo .frases {
+    opacity: 1;
+    visibility: visible;
+}
+
+.frase {
+    position: absolute;
+    color: white;
+    font-size: 14px;
+    white-space: nowrap;
+    opacity: 0.7;
+}
+
+.universo.espectaculo {
+    animation: galaGiro 40s linear infinite;
+}
+
+
+
+@keyframes galaxiaGiro {
+
+    from {
+        transform:
+            translate(-50%, -50%)
+            rotateX(65deg)
+            rotateZ(0deg);
+    }
+
+    to {
+        transform:
+            translate(-50%, -50%)
+            rotateX(65deg)
+            rotateZ(360deg);
+    }
+}
+
+/* 📱 ADAPTACIÓN PARA MÓVIL */
+
+@media (max-width: 600px) {
+
+    .contenido h1 {
+        font-size: 2.2rem;
+    }
+
+    .contenido p {
+        font-size: 1rem;
+    }
+
+    .contenido button {
+        padding: 10px 22px;
+        font-size: 0.95rem;
+    }
+
+    .galaxia-roja {
+        width: 380px;
+    }
+
+    .corazon {
+        font-size: 85px;
+    }
+
+    .flor-generada {
+        max-width: 75px;
+    }
+
+    .frase {
+        font-size: 12px;
+    }
+}
