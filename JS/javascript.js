@@ -328,6 +328,45 @@ window.addEventListener("mousemove", (e) => {
 
 universo.style.cursor = "grab";
 
+// CONTROL TÁCTIL PARA MÓVIL
+
+universo.addEventListener("touchstart", (e) => {
+    arrastrando = true;
+
+    inicioX = e.touches[0].clientX;
+    inicioY = e.touches[0].clientY;
+});
+
+universo.addEventListener("touchmove", (e) => {
+    if (!arrastrando) return;
+
+    const diferenciaX =
+        e.touches[0].clientX - inicioX;
+
+    const diferenciaY =
+        e.touches[0].clientY - inicioY;
+
+    perspectivaX += diferenciaX * 0.08;
+    perspectivaY += diferenciaY * 0.08;
+
+    perspectivaX =
+        Math.max(20, Math.min(80, perspectivaX));
+
+    perspectivaY =
+        Math.max(20, Math.min(80, perspectivaY));
+
+    universo.style.perspectiveOrigin =
+        `${perspectivaX}% ${perspectivaY}%`;
+
+    inicioX = e.touches[0].clientX;
+    inicioY = e.touches[0].clientY;
+});
+
+universo.addEventListener("touchend", () => {
+    arrastrando = false;
+});
+
+
 const btnComenzar =
     document.getElementById("btnComenzar");
 
