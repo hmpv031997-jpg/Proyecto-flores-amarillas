@@ -341,3 +341,8 @@ body {
         font-size: 12px;
     }
 }
+
+html,
+body {
+    overflow: hidden;
+}
