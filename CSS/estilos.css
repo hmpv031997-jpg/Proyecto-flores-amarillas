@@ -22,6 +22,7 @@ body {
     perspective-origin: 50% 50%;
 
     cursor: grab;
+    touch-action: none;
 }
 
 .contenido {
