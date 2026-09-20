@@ -313,6 +313,9 @@ body {
 @media (max-width: 600px) {
 
     .universo {
+    
+    padding: 0 20px;
+    text-align: center;
     height: 100dvh;
     min-height: 0;
     width: 100%;
